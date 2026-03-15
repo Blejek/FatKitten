@@ -6,43 +6,25 @@
     <title>FatKitten</title>
     <link rel="stylesheet" href="style.css">
 
-    <script type="text/javascript" src="https://unpkg.com/@zxing/browser@latest"></script>
+    <script src="./node_modules/html5-qrcode/html5-qrcode.min.js"></script>
 </head>
 <body>
-    <h1>
-        FatKitten
-    </h1>
+    <main>
 
-    <p></p>
-    
-    <video id="video" width="100%" style="border: 1px solid gray"></video>
-    <p id="result">Waiting for scan...</p>
+    </main>
 
-    <script>
-    const codeReader = new ZXingBrowser.BrowserMultiFormatReader();
-    const videoElement = document.getElementById('video');
+    <section id="meal-eater">
+        <h2>Dodaj posiłek</h2>
+    </section>
 
-    async function startScanner() {
-        // 1. Get available cameras
-        const videoInputDevices = await ZXingBrowser.BrowserCodeReader.listVideoInputDevices();
-        
-        // 2. Select the back camera (usually the last one in the list)
-        const selectedDeviceId = videoInputDevices[videoInputDevices.length - 1].deviceId;
+    <section id="meal-creator">
+        <h2>Dodaj posiłek</h2>
+    </section>
 
-        // 3. Start decoding from the video stream
-        codeReader.decodeFromVideoDevice(selectedDeviceId, videoElement, (result, err) => {
-        if (result) {
-            document.getElementById('result').textContent = "Result: " + result.getText();
-            console.log(result);
-        }
-        if (err && !(err instanceof ZXingBrowser.NotFoundException)) {
-            console.error(err);
-        }
-        });
-    }
+    <section id="scanner">
+        <h2>Skanuj kod kreskowy produktu</h2>
+    </section>
 
-    startScanner();
-    </script>
 
     <script src="script.js"></script>
 </body>
